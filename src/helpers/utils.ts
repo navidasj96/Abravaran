@@ -5,5 +5,8 @@ export const useUiRedux = () => {
   const ActiveSession = useSelector<RootState, string>(
     (state) => state.uiRedux.ActiveSession
   );
-  return { ActiveSession };
+  const HamburgerMenuIsOpen = useSelector<RootState, string | boolean>(
+    (state) => state.uiRedux.HamburgerMenuOpen
+  );
+  return { ActiveSession, HamburgerMenuIsOpen };
 };

@@ -63,7 +63,10 @@ const options: {
   },
 ];
 
-export default function Sidebar() {
+interface Props {
+  inHam?: boolean;
+}
+export default function Sidebar({ inHam }: Props) {
   const dispatch = useDispatch();
   const { ActiveSession } = useUiRedux();
   const navigate = useNavigate();
@@ -82,7 +85,9 @@ export default function Sidebar() {
         ActiveSession === "Home" && "w-[230px]"
       } ${
         ActiveSession !== "Home" && "w-[80px]"
-      }     lg:translate-x-0 translate-x-full h-screen  fixed top-0  z-[100] transition-all`}
+      }     lg:translate-x-0 translate-x-full h-screen  ${
+        !inHam && "fixed top-0 "
+      }${inHam && "flex"} z-[100] transition-all`}
     >
       <div className="flex flex-col">
         {options.map((item) => {
