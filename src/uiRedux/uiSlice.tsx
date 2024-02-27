@@ -6,7 +6,7 @@ export interface UiState {
 }
 
 const initialState: UiState = {
-  ActiveSession: "",
+  ActiveSession: "Home",
   HamburgerMenuOpen: false,
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import MainHeader from "./components/MainHeader";
@@ -11,7 +11,6 @@ function App() {
   const { ActiveSession: active, HamburgerMenuIsOpen } = useUiRedux();
   const dispatch = useDispatch();
   console.log("active is ", active);
-
   return (
     <div className={`App relative `}>
       <div
