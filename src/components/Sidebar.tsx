@@ -2,10 +2,11 @@ import React from "react";
 
 import Icon from "./Icon";
 import { useDispatch } from "react-redux";
-import { setActiveSession } from "../uiRedux/uiSlice";
+import { setActiveSession, setHamburgerMenu } from "../uiRedux/uiSlice";
 import { useUiRedux } from "../helpers/utils";
 import { useNavigate } from "react-router-dom";
-const options: {
+import IconComponent from "./IconComponent";
+export const MainMenuoptions: {
   title: string;
   title_fa: string;
   Icon: any;
@@ -83,14 +84,25 @@ export default function Sidebar({ inHam }: Props) {
     <div
       className={`flex transition-all fontIR mr-2  flex-col ${
         ActiveSession === "Home" && "w-[230px]"
-      } ${
+      } ${inHam && "w-[80px]"} ${
         ActiveSession !== "Home" && "w-[80px]"
-      }     lg:translate-x-0 translate-x-full h-screen  ${
-        !inHam && "fixed top-0 "
-      }${inHam && "flex"} z-[100] transition-all`}
+      }     lg:translate-x-0 translate-x-full h-screen  fixed top-0 z-[100] transition-all  ${
+        inHam && "right-[100px]"
+      }`}
     >
       <div className="flex flex-col">
-        {options.map((item) => {
+        <div
+          onClick={() => {
+            dispatch(setHamburgerMenu());
+          }}
+          className="mx-auto mt-1"
+        >
+          <div className={`${!inHam && "hidden"} text-[20px]`}>
+            <IconComponent iconName="Close" />
+          </div>
+        </div>
+
+        {MainMenuoptions.map((item) => {
           return (
             <div
               onClick={() => {
@@ -98,14 +110,17 @@ export default function Sidebar({ inHam }: Props) {
                 handleChangeRoute(item.route);
               }}
               className={`${
-                ActiveSession !== "Home" && "mt-6"
-              } transition-all ${ActiveSession === "Home" && "mt-5"}`}
+                ActiveSession !== "Home" && "mt-2"
+              } transition-all ${ActiveSession === "Home" && "mt-1"} ${
+                inHam && "mt-2"
+              }`}
             >
               <Icon
                 title={item.title}
                 title_fa={item.title_fa}
                 Icon={item.Icon}
                 abbrev={item.abbrev}
+                inHam={inHam}
               />
             </div>
           );

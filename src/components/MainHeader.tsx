@@ -1,14 +1,32 @@
 import { useDispatch } from "react-redux";
 import IconComponent from "./IconComponent";
-import { setHamburgerMenu } from "../uiRedux/uiSlice";
+import {
+  setHamburgerMenu,
+  setNotificationModalOpen,
+  setProfileModalOpen,
+  setProfilePopOverOpen,
+  setProfilePopOverToggle,
+} from "../uiRedux/uiSlice";
+import { useUiRedux } from "../helpers/utils";
 
 export default function MainHeader() {
   const dispatch = useDispatch();
+  const { ActiveSession } = useUiRedux();
   return (
-    <div className="w-full h-[80px] bg-white botrder-b-2 items-center px-5">
+    <div
+      className={`w-full h-[60px] bg-white botrder-b-2 items-center px-5 ${
+        ActiveSession !== "Home" && ""
+      } `}
+    >
       <div className="w-full h-full flex flex-row-reverse justify-between items-center space-x-3">
-        <div className="flex flex-row-reverse">
-          <div className="cursor-pointer flex hover:bg-gray-400 flex-row w-[80px] lg:w-[150px] bg-gray-300 border rounded-lg h-[40px] items-center justify-evenly  transition-all">
+        <div className="flex flex-row-reverse space-x-3">
+          <div
+            onClick={() => {
+              dispatch(setProfileModalOpen());
+              dispatch(setProfilePopOverToggle());
+            }}
+            className="cursor-pointer flex hover:bg-gray-400 flex-row w-[80px] lg:w-[150px] bg-gray-300 border rounded-lg h-[40px] items-center justify-evenly  transition-all"
+          >
             <IconComponent iconName="Profile" />
             <span className="lg:hidden">
               <IconComponent iconName="More" />
@@ -22,7 +40,10 @@ export default function MainHeader() {
               <IconComponent iconName="Code" />
             </span>
           </div>
-          <div className="w-[40px] h-[40px]  text-[25px] rounded-lg items-center cursor-pointer flex hover:bg-gray-400">
+          <div
+            onClick={() => dispatch(setNotificationModalOpen())}
+            className="w-[40px] h-[40px]  text-[25px] rounded-lg items-center cursor-pointer flex hover:bg-gray-400"
+          >
             <span className="mx-auto">
               <IconComponent iconName="Bell" />
             </span>

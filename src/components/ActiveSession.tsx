@@ -9,10 +9,14 @@ import ManagedDatabase from "./sessions/ManagedDatabase";
 
 export default function ActiveSession() {
   return (
-    <div className="w-full h-screen bg-yellow-100">
+    <div className="w-full h-screen  ">
       <HomeSession />
-      <CdnSession />
-      <CloudServer />
+      <div className="flex h-full  w-full ">
+        <CdnSession />
+      </div>
+      <div className="flex h-full  w-full ">
+        <CloudServer />
+      </div>
       <ObjectiveStorage />
       <CloudContainer />
       <VideoPlatform />
