@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useUiRedux } from "../../helpers/utils";
+import Login from "../../Login";
 
 export default function HomeSession() {
   const { ActiveSession } = useUiRedux();
@@ -11,7 +12,9 @@ export default function HomeSession() {
         ActiveSession !== "Home" && "hidden"
       }`}
     >
-      HomeSession
+      <div className="mx-auto mt-20">
+        <Login />
+      </div>
     </div>
   );
 }

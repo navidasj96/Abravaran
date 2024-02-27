@@ -6,7 +6,7 @@ import { setActiveSession, setHamburgerMenu } from "../uiRedux/uiSlice";
 import { useUiRedux } from "../helpers/utils";
 import { useNavigate } from "react-router-dom";
 import IconComponent from "./IconComponent";
-const options: {
+export const MainMenuoptions: {
   title: string;
   title_fa: string;
   Icon: any;
@@ -95,14 +95,14 @@ export default function Sidebar({ inHam }: Props) {
           onClick={() => {
             dispatch(setHamburgerMenu());
           }}
-          className="mx-auto mt-5"
+          className="mx-auto mt-1"
         >
           <div className={`${!inHam && "hidden"} text-[20px]`}>
             <IconComponent iconName="Close" />
           </div>
         </div>
 
-        {options.map((item) => {
+        {MainMenuoptions.map((item) => {
           return (
             <div
               onClick={() => {
@@ -110,9 +110,9 @@ export default function Sidebar({ inHam }: Props) {
                 handleChangeRoute(item.route);
               }}
               className={`${
-                ActiveSession !== "Home" && "mt-6"
-              } transition-all ${ActiveSession === "Home" && "mt-5"} ${
-                inHam && "mt-6"
+                ActiveSession !== "Home" && "mt-2"
+              } transition-all ${ActiveSession === "Home" && "mt-1"} ${
+                inHam && "mt-2"
               }`}
             >
               <Icon
