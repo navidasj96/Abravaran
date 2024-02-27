@@ -4,37 +4,17 @@ import Sidebar from "./components/Sidebar";
 import MainHeader from "./components/MainHeader";
 import ActiveSession from "./components/ActiveSession";
 import { useUiRedux } from "./helpers/utils";
-import { useDispatch } from "react-redux";
-import { setHamburgerMenu } from "./uiRedux/uiSlice";
+
+import HamburgerMenu from "./components/HamburgerMenu";
+import ProfileModal from "./components/ProfileModal";
 
 function App() {
-  const { ActiveSession: active, HamburgerMenuIsOpen } = useUiRedux();
-  const dispatch = useDispatch();
-  console.log("active is ", active);
+  const { ActiveSession: active } = useUiRedux();
 
   return (
     <div className={`App relative `}>
-      <div
-        className={`w-screen h-screen ${
-          HamburgerMenuIsOpen && "translate-x-0"
-        } ${
-          !HamburgerMenuIsOpen && "translate-x-full"
-        }  transition bg-white lg:hidden fixed z-[1000]`}
-      >
-        <button
-          onClick={() => {
-            dispatch(setHamburgerMenu());
-          }}
-        >
-          close
-        </button>
-        <div className="flex flex-row-reverse">
-          <div className="flex w-[30%] bg-red-300 ">
-            {/* <Sidebar inHam={true} /> */}
-          </div>
-          <div className="bg-red  h-screen w-[70%] bg-blue-200"></div>
-        </div>
-      </div>
+      <HamburgerMenu />
+      <ProfileModal />
       <div className="flex w-full flex-row rtl border-l-2 ">
         <div>
           <Sidebar />

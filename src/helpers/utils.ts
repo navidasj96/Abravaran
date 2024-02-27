@@ -8,5 +8,8 @@ export const useUiRedux = () => {
   const HamburgerMenuIsOpen = useSelector<RootState, string | boolean>(
     (state) => state.uiRedux.HamburgerMenuOpen
   );
-  return { ActiveSession, HamburgerMenuIsOpen };
+  const ProfileModalIsOpen = useSelector<RootState, string | boolean>(
+    (state) => state.uiRedux.ProfileModalIsOpen
+  );
+  return { ActiveSession, HamburgerMenuIsOpen, ProfileModalIsOpen };
 };

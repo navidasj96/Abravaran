@@ -7,8 +7,9 @@ interface Props {
   title_fa: string;
   Icon: any;
   abbrev: string;
+  inHam?: boolean;
 }
-export default function Icon({ title, title_fa, Icon, abbrev }: Props) {
+export default function Icon({ title, title_fa, Icon, abbrev, inHam }: Props) {
   const { ActiveSession } = useUiRedux();
   const [isHovered, setIsHovered] = useState(false);
   return (
@@ -24,13 +25,13 @@ export default function Icon({ title, title_fa, Icon, abbrev }: Props) {
           isHovered && "bg-gray-300"
         } flex flex-col  ${
           ActiveSession !== "Home" && "items-center text-[30px] mx-auto"
-        }  text-[30px]`}
+        } ${inHam && "items-center text-[30px] mx-auto"}  text-[30px]`}
       >
         <IconComponent iconName={Icon} />
         <p
           className={` ${
-            ActiveSession === "Home" && "hidden"
-          } text-[14px] w-full   `}
+            ActiveSession === "Home" && !inHam && "hidden"
+          }  text-[14px] w-full   `}
         >
           {abbrev}
         </p>
@@ -38,7 +39,7 @@ export default function Icon({ title, title_fa, Icon, abbrev }: Props) {
       <div
         className={`flex flex-col fontIR mr-5 my-auto ${
           ActiveSession !== "Home" && "hidden"
-        }`}
+        } ${inHam && "hidden"}`}
       >
         <div>{title}</div>
         <div>{title_fa}</div>

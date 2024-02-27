@@ -1,14 +1,17 @@
 import { useDispatch } from "react-redux";
 import IconComponent from "./IconComponent";
-import { setHamburgerMenu } from "../uiRedux/uiSlice";
+import { setHamburgerMenu, setProfileModalOpen } from "../uiRedux/uiSlice";
 
 export default function MainHeader() {
   const dispatch = useDispatch();
   return (
     <div className="w-full h-[80px] bg-white botrder-b-2 items-center px-5">
       <div className="w-full h-full flex flex-row-reverse justify-between items-center space-x-3">
-        <div className="flex flex-row-reverse">
-          <div className="cursor-pointer flex hover:bg-gray-400 flex-row w-[80px] lg:w-[150px] bg-gray-300 border rounded-lg h-[40px] items-center justify-evenly  transition-all">
+        <div className="flex flex-row-reverse space-x-3">
+          <div
+            onClick={() => dispatch(setProfileModalOpen())}
+            className="cursor-pointer flex hover:bg-gray-400 flex-row w-[80px] lg:w-[150px] bg-gray-300 border rounded-lg h-[40px] items-center justify-evenly  transition-all"
+          >
             <IconComponent iconName="Profile" />
             <span className="lg:hidden">
               <IconComponent iconName="More" />
