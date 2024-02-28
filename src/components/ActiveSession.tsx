@@ -14,7 +14,9 @@ export default function ActiveSession() {
       <div className="flex h-full  w-full ">
         <CdnSession />
       </div>
-      <CloudServer />
+      <div className="flex h-full  w-full ">
+        <CloudServer />
+      </div>
       <ObjectiveStorage />
       <CloudContainer />
       <VideoPlatform />

@@ -1,13 +1,15 @@
 import React from "react";
 
 import { useUiRedux } from "../../helpers/utils";
-import MenuOptions from "../MenuOptions";
-import IconComponent from "../IconComponent";
+import NestedList from "../NestedItems";
 const options: { MainTitle: string; subTitle?: { title: string }[] }[] = [
   { MainTitle: "دامنه‌های من" },
   { MainTitle: "لیست‌ها" },
   { MainTitle: "لاگ تغییرات پنل" },
-  { MainTitle: "تنظیمات", subTitle: [{ title: "انتقال دامنه" }] },
+  {
+    MainTitle: "تنظیمات",
+    subTitle: [{ title: "انتقال دامنه" }, { title: "تغییر نام دامنه" }],
+  },
 ];
 export default function CdnSession() {
   const { ActiveSession, HamburgerMenuIsOpen } = useUiRedux();
@@ -17,7 +19,7 @@ export default function CdnSession() {
         ActiveSession !== "CDN" && "hidden"
       } w-full   `}
     >
-      <div className="w-full flex flex-row  ">
+      {/* <div className="w-full flex flex-row  ">
         <div
           className={`fixed top-0 lg:translate-x-0 translate-x-full w-[0px] lg:w-[200px] h-screen  `}
         >
@@ -44,6 +46,15 @@ export default function CdnSession() {
               </div>
             </div>
           </div>
+        </div>
+      </div> */}
+      <div
+        className={`flex ml-[100%] ${
+          !HamburgerMenuIsOpen && "hidden lg:flex lg:border-l"
+        } `}
+      >
+        <div className="fixed top-10">
+          <NestedList options={options} />
         </div>
       </div>
     </div>

@@ -1,16 +1,47 @@
 import React from "react";
 import { useUiRedux } from "../../helpers/utils";
-
+import NestedList from "../NestedItems";
+const options: { MainTitle: string; subTitle?: { title: string }[] }[] = [
+  { MainTitle: "ابرک‌ها", subTitle: [{ title: "ابرک‌ها" }] },
+  {
+    MainTitle: "لیست‌ها",
+    subTitle: [
+      { title: "IP اینترنتی" },
+      { title: "شبکه‌خصوصی" },
+      { title: "IPشناور" },
+    ],
+  },
+  {
+    MainTitle: "لاگ تغییرات پنل",
+    subTitle: [
+      { title: "فایروال" },
+      { title: "کلید SSH" },
+      { title: "IPشناور" },
+    ],
+  },
+  {
+    MainTitle: "تنظیمات",
+    subTitle: [{ title: "انتقال دامنه" }, { title: "تغییر نام دامنه" }],
+  },
+];
 export default function CloudServer() {
-  const { ActiveSession } = useUiRedux();
+  const { ActiveSession, HamburgerMenuIsOpen } = useUiRedux();
 
   return (
     <div
       className={`${ActiveSession === "Cloud Server" && "flex"} ${
         ActiveSession !== "Cloud Server" && "hidden"
-      }`}
+      } w-full   `}
     >
-      CloudServer
+      <div
+        className={`flex ml-[100%] ${
+          !HamburgerMenuIsOpen && "hidden lg:flex lg:border-l"
+        } `}
+      >
+        <div className="fixed top-10">
+          <NestedList options={options} />
+        </div>
+      </div>
     </div>
   );
 }
