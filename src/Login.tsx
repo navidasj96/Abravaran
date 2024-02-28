@@ -1,27 +1,10 @@
 import React, { useEffect, useState, useTransition } from "react";
 import AuthFormContainer from "./components/AuthForm";
 import { Button, Input } from "@material-tailwind/react";
-
 export default function Login() {
-  const [sumbitted, setIsSubmitted] = useState(0);
   const headers = new Headers();
   headers.append("accept", "*/*"); // Set the 'accept' header
   headers.append("Content-Type", "application/json"); // Set the
-  // useEffect(() => {
-  //   const fetctJWT = async () => {
-  //     const res = await fetch(
-  //       "http://100.124.5.231/api/Authentication/Signin",
-  //       {
-  //         method: "POST",
-  //         body: JSON.stringify({ userName: email, password: password }),
-  //         headers: headers,
-  //       }
-  //     );
-  //     const data = await res.json();
-  //     console.log(data);
-  //   };
-  //   fetctJWT();
-  // }, [sumbitted]);
 
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -41,7 +24,6 @@ export default function Login() {
     } catch (error) {
       console.log(error);
     }
-    setIsSubmitted((prev) => prev + 1);
     console.log(`pass is ${password} and email is ${email}`);
   };
   const emailHandler = (e: React.FormEvent<HTMLInputElement>) => {
