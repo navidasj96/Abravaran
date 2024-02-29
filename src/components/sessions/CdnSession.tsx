@@ -50,10 +50,13 @@ export default function CdnSession() {
       </div> */}
       <div
         className={`flex ml-[100%] ${
-          !HamburgerMenuIsOpen && "hidden lg:flex lg:border-l"
+          !HamburgerMenuIsOpen && "hidden lg:flex "
         } `}
       >
-        <div className="fixed top-10">
+        <div className="fixed top-10  h-screen lg:border-l">
+          <div className="flex flex-row py-5 w-full lg:border-b">
+            <p className="fontIR mx-auto py-4">شبکه توزیع محتوا</p>
+          </div>
           <NestedList options={options} />
         </div>
       </div>

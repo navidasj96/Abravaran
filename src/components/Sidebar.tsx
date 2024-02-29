@@ -85,10 +85,10 @@ export default function Sidebar({ inHam }: Props) {
       className={`flex transition-all fontIR mr-2  flex-col ${
         ActiveSession === "Home" && "w-[230px]"
       } ${inHam && "w-[80px]"} ${
-        ActiveSession !== "Home" && "w-[80px]"
+        ActiveSession !== "Home" && "w-[70px]"
       }     lg:translate-x-0 translate-x-full h-screen  fixed top-0 z-[100] transition-all  ${
         inHam && "right-[100px]"
-      }`}
+      } border-l bg-white`}
     >
       <div className="flex flex-col">
         <div

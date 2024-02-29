@@ -24,8 +24,8 @@ export default function Icon({ title, title_fa, Icon, abbrev, inHam }: Props) {
         className={`p-2 rounded-lg ${
           isHovered && "bg-gray-300"
         } flex flex-col  ${
-          ActiveSession !== "Home" && "items-center text-[25px] mx-auto"
-        } ${inHam && "items-center text-[30px] mx-auto"}  text-[25px]`}
+          ActiveSession !== "Home" && "items-center text-[20px] mx-auto"
+        } ${inHam && "items-center text-[20px] mx-auto"}  text-[20px]`}
       >
         <IconComponent iconName={Icon} />
         <p

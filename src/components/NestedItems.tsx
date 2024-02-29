@@ -173,7 +173,7 @@ const NestedList = ({ options }: Props) => {
         outlineOffset: "2px",
       }}
       // Adjust the width as needed
-      className="fontIR outline-none w-[60vw] pl-10 lg:w-[200px]  "
+      className="fontIR outline-none w-[60vw] pl-1 lg:w-[200px]  "
     >
       {options.map((option, index) => (
         <React.Fragment key={index}>
@@ -193,7 +193,10 @@ const NestedList = ({ options }: Props) => {
               ))}
             </SubMenu>
           ) : (
-            <Menu.Item className="outline-none" key={`main${index}`}>
+            <Menu.Item
+              className="outline-none"
+              key={`main${index}`}
+            >
               {option.MainTitle}
             </Menu.Item>
           )}

@@ -36,9 +36,12 @@ export default function CloudServer() {
       <div
         className={`flex ml-[100%] ${
           !HamburgerMenuIsOpen && "hidden lg:flex lg:border-l"
-        } `}
+        }  `}
       >
-        <div className="fixed top-10">
+        <div className="fixed top-10  lg:border-l h-screen ">
+          <div className="flex flex-row py-5 lg:border-b">
+            <p className="fontIR mx-auto lg:py-4"> سرور ابری</p>
+          </div>
           <NestedList options={options} />
         </div>
       </div>

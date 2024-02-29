@@ -13,7 +13,7 @@ export default function HamburgerMenu() {
       }  transition bg-white lg:hidden fixed z-[1000]`}
     >
       <div className="flex flex-row-reverse">
-        <div className="flex w-[30%] border-l  ">
+        <div className="flex w-[30%] lg:border-l  ">
           <Sidebar inHam={true} />
         </div>
         <div className="rtl   h-screen w-[70%] ">

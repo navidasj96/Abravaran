@@ -4,6 +4,8 @@ import Sidebar from "./components/Sidebar";
 import MainHeader from "./components/MainHeader";
 import ActiveSession from "./components/ActiveSession";
 import { useUiRedux } from "./helpers/utils";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import HamburgerMenu from "./components/HamburgerMenu";
 import ProfileModal from "./components/ProfileModal";
@@ -36,31 +38,36 @@ function App() {
     }
   }, [screenWidth, dispatch]);
 
+  const queryClient = new QueryClient();
+
   return (
-    <div className={`App relative `}>
-      <HamburgerMenu />
-      <ProfileModal />
-      <Notification />
-      <ProfilePopOver />
-      <div className="flex w-full flex-row rtl border-l-2 ">
-        <div>
-          <Sidebar />
-        </div>
-        <div
-          className={`w-0  flex flex-col ${
-            active !== "Home" && "lg:w-[100px]"
-          } ${active === "Home" && "lg:w-[280px]"}  h-screen  sticky top-0 `}
-        ></div>
-        <div className="w-screen flex flex-col mr-4 ">
-          <div className="sticky top-0 ">
-            <MainHeader />
+    <QueryClientProvider client={queryClient}>
+      <div className={`App relative `}>
+        <HamburgerMenu />
+        <ProfileModal />
+        <Notification />
+        <ProfilePopOver />
+        <div className="flex w-full flex-row rtl border-l-2 ">
+          <div className="">
+            <Sidebar />
           </div>
-          <div className="w-full">
-            <ActiveSession />
+          <div
+            className={`w-0  flex flex-col ${
+              active !== "Home" && "lg:w-[100px]"
+            } ${active === "Home" && "lg:w-[280px]"}  h-screen  sticky top-0 `}
+          ></div>
+          <div className="w-screen flex flex-col  ">
+            <div className="sticky top-0 z-10 border-b ">
+              <MainHeader />
+            </div>
+            <div className="w-full">
+              <ActiveSession />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 
